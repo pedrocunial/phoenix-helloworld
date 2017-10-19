@@ -1,4 +1,8 @@
 defmodule HelloWeb.Router do
+  @moduledoc """
+  Router
+  """
+
   use HelloWeb, :router
 
   pipeline :browser do
@@ -17,6 +21,7 @@ defmodule HelloWeb.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    get "/hello", HelloController, :index
   end
 
   # Other scopes may use custom stacks.
