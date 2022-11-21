@@ -5,23 +5,7 @@ jobs:
     name: runner / credo
     runs-on: ubuntu-latest
     steps:
-      - name: Check out code.
-        uses: actions/checkout@v2
-      - uses: erlef/setup-beam@v1
-        with:
-          otp-version: 24.0
-          elixir-version: 1.12
-      - name: Install Dependencies
-        run: |
-          mix local.rebar --force
-          mix local.hex --force
-          mix deps.get
-      - name: credo
-        uses: ./
-        with:
-          github_token: ${{ secrets.github_token }}
-      - name: credo-pr-review
-        uses: ./
-        with:
-          github_token: ${{ secrets.github_token }}
-          reporter: github-pr-review
+        - uses: actions/checkout@v3
+
+        - name: Run Credo
+          uses: sumup-bank/run-credo@v1
